@@ -2,8 +2,11 @@
 @description('Location for the Log Analytics workspace.')
 param location string
 
+@description('Name for the Log Analytics workspace.')
+param logAnalyticsName string = 'cloudMonitor-log'
+
 resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
-  name: 'cloudMonitor-log'
+  name: logAnalyticsName
   location: location
   properties: {
     sku: {
