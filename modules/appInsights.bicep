@@ -16,7 +16,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
     Application_Type: 'web'
     WorkspaceResourceId: logAnalyticsWorkspaceId
     IngestionMode: 'ApplicationInsights'
-    RetentionInDays: 90
+    RetentionInDays: 30
     DisableIpMasking: false
   }
 }
