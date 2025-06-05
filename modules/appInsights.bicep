@@ -1,4 +1,3 @@
-
 @description('Location for the Application Insights resource.')
 param location string
 

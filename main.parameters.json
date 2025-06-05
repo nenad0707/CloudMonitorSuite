@@ -4,6 +4,9 @@
   "parameters": {
     "location": { "value": "westeurope" },
     "logAnalyticsName": { "value": "cloudMonitor-log" },
-    "appInsightsName": { "value": "cloudMonitor-ai" }
+    "appInsightsName": { "value": "cloudMonitor-ai" },
+     "budgetName": { "value": "cloudMonitor-budget" },
+    "budgetAmount": { "value": 5 },
+    "budgetEmails": { "value": ["nenad984@outlook.com","risticnenad.vr@gmail.com"] }
   }
 }
