@@ -18,6 +18,9 @@ param budgetEmails array = [
   ''
 ]
 
+@description('Start date for the budget (ISO format, default: today)')
+param budgetStartDate string
+
 module logAnalyticsModule 'modules/logAnalytics.bicep' = {
   name: 'logAnalyticsDeploy'
   params: {
@@ -41,6 +44,7 @@ module budgetModule 'modules/budget.bicep' = {
     budgetName: budgetName
     amount: budgetAmount 
     contactEmails: budgetEmails
+    startDate: budgetStartDate
   }
 }
 

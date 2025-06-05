@@ -5,7 +5,7 @@ param budgetName string
 param amount int
 
 @description('Start date for the budget (ISO format, default: today)')
-param startDate string = utcNow('yyyy-MM-ddT00:00:00Z')
+param startDate string 
 
 @description('Email addresses to notify when budget threshold is reached')
 param contactEmails array = []
