@@ -21,9 +21,17 @@ param budgetEmails array = [
 @description('Start date for the budget (ISO format, default: today)')
 param budgetStartDate string
 
+@description('Common tags for all resources.')
+param tags object = {
+  environment: 'production'
+  project: 'CloudMonitorSuite'
+  owner: 'Nenad Ristic'
+}
+
 module logAnalyticsModule 'modules/logAnalytics.bicep' = {
   name: 'logAnalyticsDeploy'
   params: {
+    tags: tags
     location: location
     logAnalyticsName: logAnalyticsName
   }
@@ -32,6 +40,7 @@ module logAnalyticsModule 'modules/logAnalytics.bicep' = {
 module appInsightsModule 'modules/appInsights.bicep' = {
   name: 'appInsightsDeploy'
   params: {
+    tags: tags
     location: location
     appInsightsName: appInsightsName
     logAnalyticsWorkspaceId: logAnalyticsModule.outputs.workspaceId
