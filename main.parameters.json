@@ -7,7 +7,6 @@
     "appInsightsName": { "value": "cloudMonitor-ai" },
      "budgetName": { "value": "cloudMonitor-budget" },
     "budgetAmount": { "value": 5 },
-    "budgetEmails": { "value": ["",""] },
     "budgetStartDate": { "value": "2025-06-01T00:00:00Z" }
   }
 }
