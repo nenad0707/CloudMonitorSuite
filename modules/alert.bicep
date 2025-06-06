@@ -23,14 +23,14 @@ resource metricAlert 'Microsoft.Insights/metricAlerts@2018-03-01' = {
   'odata.type': 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'
   allOf: [
     {
-      criterionType: 'StaticThresholdCriterion'
-      name: 'IngestionThreshold'
-      metricName: 'Total Ingested Volume'
-      metricNamespace: 'Microsoft.OperationalInsights/workspaces'
-      operator: 'GreaterThan'
-      threshold: 1
-      timeAggregation: 'Total'
-      dimensions: []
+        name: 'IngestionVolumeCriteria'
+        criterionType: 'StaticThresholdCriterion'
+        metricName: 'Ingestion Volume'
+        metricNamespace: 'microsoft.operationalinsights/workspaces'
+        operator: 'GreaterThan'
+        threshold: 1
+        timeAggregation: 'Total'
+        dimensions: []
     }
   ]
 }
