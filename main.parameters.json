@@ -8,7 +8,7 @@
      "budgetName": { "value": "cloudMonitor-budget" },
     "budgetAmount": { "value": 5 },
     "budgetStartDate": { "value": "2025-06-01T00:00:00Z" },
-     "actionGroupName": { "value": "cloudMonitor-alertgroup" },
+     "actionGroupName": { "value": "CMAlertGrp" },
     "alertRuleName": { "value": "cloudMonitor-1gb-ingestion-alert" },
      "tags": {
       "value": {
