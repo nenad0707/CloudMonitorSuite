@@ -25,7 +25,7 @@ resource metricAlert 'Microsoft.Insights/metricAlerts@2018-03-01' = {
     {
       criterionType: 'StaticThresholdCriterion'
       name: 'IngestionThreshold'
-      metricName: 'Ingress'
+      metricName: 'Total Ingested Volume'
       metricNamespace: 'Microsoft.OperationalInsights/workspaces'
       operator: 'GreaterThan'
       threshold: 1
