@@ -22,11 +22,13 @@ param budgetEmails array = [
 param budgetStartDate string
 
 @description('Common tags for all resources.')
-param tags object = {
-  environment: 'production'
-  project: 'CloudMonitorSuite'
-  owner: 'Nenad Ristic'
-}
+param tags object
+
+@description('Name for the action group.')
+param actionGroupName string
+
+@description('Name for the alert rule.')
+param alertRuleName string
 
 module logAnalyticsModule 'modules/logAnalytics.bicep' = {
   name: 'logAnalyticsDeploy'
@@ -54,6 +56,23 @@ module budgetModule 'modules/budget.bicep' = {
     amount: budgetAmount 
     contactEmails: budgetEmails
     startDate: budgetStartDate
+  }
+}
+
+module actionGroupModule 'modules/actionGroup.bicep' = {
+  name: 'actionGroupDeploy'
+  params: {
+    actionGroupName: actionGroupName
+    emailReceivers: budgetEmails
+  }
+}
+
+module alertModule 'modules/alert.bicep' = {
+  name: 'alertDeploy'
+  params: {
+    alertRuleName: alertRuleName
+    workspaceId: logAnalyticsModule.outputs.workspaceId
+    actionGroupId: actionGroupModule.outputs.actionGroupId
   }
 }
 

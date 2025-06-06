@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": { "value": "westeurope" },
@@ -7,6 +7,15 @@
     "appInsightsName": { "value": "cloudMonitor-ai" },
      "budgetName": { "value": "cloudMonitor-budget" },
     "budgetAmount": { "value": 5 },
-    "budgetStartDate": { "value": "2025-06-01T00:00:00Z" }
+    "budgetStartDate": { "value": "2025-06-01T00:00:00Z" },
+     "actionGroupName": { "value": "cloudMonitor-alertgroup" },
+    "alertRuleName": { "value": "cloudMonitor-1gb-ingestion-alert" },
+     "tags": {
+      "value": {
+        "environment": "production",
+        "project": "CloudMonitorSuite",
+        "owner": "Nenad Ristic"
+      }
+    }
   }
 }
