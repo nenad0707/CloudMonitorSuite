@@ -36,7 +36,7 @@ stages:
               az deployment group validate \
                 --resource-group $(resourceGroupName) \
                 --template-file $(templateFile) \
-                --parameters @$(parameterFile)
+                --parameters @$(parameterFile) \
                 --parameters budgetEmails=$(budgetEmails)
           displayName: 'Bicep Validate'
 
