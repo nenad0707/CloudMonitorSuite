@@ -24,12 +24,6 @@ param budgetStartDate string
 @description('Common tags for all resources.')
 param tags object
 
-@description('Name for the action group.')
-param actionGroupName string
-
-@description('Name for the alert rule.')
-param alertRuleName string
-
 module logAnalyticsModule 'modules/logAnalytics.bicep' = {
   name: 'logAnalyticsDeploy'
   params: {
@@ -59,22 +53,6 @@ module budgetModule 'modules/budget.bicep' = {
   }
 }
 
-module actionGroupModule 'modules/actionGroup.bicep' = {
-  name: 'actionGroupDeploy'
-  params: {
-    actionGroupName: actionGroupName
-    emailReceivers: budgetEmails
-  }
-}
-
-module alertModule 'modules/alert.bicep' = {
-  name: 'alertDeploy'
-  params: {
-    alertRuleName: alertRuleName
-    workspaceId: logAnalyticsModule.outputs.workspaceId
-    actionGroupId: actionGroupModule.outputs.actionGroupId
-  }
-}
 
 output logAnalyticsWorkspaceId string = logAnalyticsModule.outputs.workspaceId
 output applicationInsightsId string = appInsightsModule.outputs.appInsightsId
