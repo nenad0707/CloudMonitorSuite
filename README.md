@@ -80,7 +80,6 @@ This project demonstrates **cloud-first observability strategies** and provides 
 ### Infrastructure & Deployment
 
 - **Azure Bicep**: Infrastructure-as-Code for automated deployments
-- **Azure Resource Manager (ARM)**: Resource provisioning and management
 - **Azure Pipelines**: CI/CD pipeline for infrastructure deployment
 - **PowerShell**: Automation scripts for identity and access management, including federated credentials (`create-identity.ps1`) for secure CI/CD integration
 
