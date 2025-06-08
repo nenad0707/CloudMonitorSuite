@@ -1,0 +1,4 @@
+requests
+| where timestamp > startofday(now())
+| summarize TotalRequests = count(), FailedRequests = countif(success == false)
+| extend FailureRate = round(100.0 * FailedRequests / TotalRequests, 2)

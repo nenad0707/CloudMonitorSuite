@@ -1,0 +1,4 @@
+exceptions
+| order by timestamp desc
+| project timestamp, type, message
+| take 10

@@ -1,0 +1,4 @@
+requests
+| summarize AvgDurationMs = avg(duration) by name
+| order by AvgDurationMs desc
+| take 5

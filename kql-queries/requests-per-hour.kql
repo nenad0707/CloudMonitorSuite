@@ -1,0 +1,4 @@
+requests
+| where timestamp > ago(24h)
+| summarize Count = count() by bin(timestamp, 1h)
+| order by timestamp asc

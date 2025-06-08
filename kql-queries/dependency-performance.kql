@@ -1,0 +1,4 @@
+dependencies
+| where type in ("SQL", "Http")
+| summarize AvgDurationMs = avg(duration) by target, type
+| order by AvgDurationMs desc

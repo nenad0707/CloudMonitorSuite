@@ -1,0 +1,4 @@
+traces
+| where severityLevel >= 2
+| summarize Count = count() by severityLevel, message
+| order by Count desc
