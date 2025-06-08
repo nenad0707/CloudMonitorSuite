@@ -34,6 +34,7 @@
   - [📂 KQL Queries \& Analysis](#-kql-queries--analysis)
   - [🚀 Deployment \& Cost Optimization](#-deployment--cost-optimization)
     - [Infrastructure as Code](#infrastructure-as-code)
+      - [Code Structure \& Modules](#code-structure--modules)
     - [Automated Deployment](#automated-deployment)
     - [Cost Management](#cost-management)
   - [📄 License](#-license)
@@ -187,6 +188,25 @@ All resources are defined using **Azure Bicep** templates, providing:
 - Easy customization through parameters
 - Modular design for component reuse
 
+#### Code Structure & Modules
+
+The Bicep implementation follows a modular approach for better maintainability:
+
+- **`main.bicep`**: Entry point that coordinates all resource deployments
+- **`main.parameters.json`**: Centralized parameter configuration
+
+**Modular Components:**
+
+- **`modules/appInsights.bicep`**: Deploys Application Insights instance with proper configuration
+- **`modules/logAnalytics.bicep`**: Creates and configures Log Analytics workspace with optimal retention settings
+- **`modules/budget.bicep`**: Sets up cost management and budget alerts with email notifications
+
+The main template orchestrates these modules with proper dependencies (for example, Application Insights depends on Log Analytics Workspace). This architecture ensures that the monitoring solution is deployed as an integrated system while maintaining the modularity needed for easier maintenance and potential reuse.
+
+Key outputs from the deployment include workspace IDs, and resource identifiers that can be used for connecting the MovieCraft application to the monitoring infrastructure.
+
+This modular structure allows for independent updates and reuse of components across environments.
+
 ### Automated Deployment
 
 The solution is deployed through an **Azure Pipeline** defined in [`azure-pipelines.yml`](./azure-pipelines.yml):
@@ -198,7 +218,12 @@ The solution is deployed through an **Azure Pipeline** defined in [`azure-pipeli
 # 3. Deploy to Azure - Create/update resources
 ```
 
-The pipeline uses OIDC (OpenID Connect) with federated credentials established by the [`create-identity.ps1`](./scripts/create-identity.ps1) script for secure, passwordless authentication to Azure resources. This modern approach eliminates the need for storing service principal secrets and provides enhanced security through short-lived tokens.
+The pipeline uses OIDC (OpenID Connect) with federated credentials established by the [`create-identity.ps1`](./scripts/create-identity.ps1) script for secure, passwordless authentication to Azure resources. This modern approach eliminates the need for storing service principal secrets and provides enhanced security through short-lived tokens. The script:
+
+1. Creates a resource group for hosting the monitoring infrastructure
+2. Registers a new application in Azure Active Directory
+3. Creates a service principal for the application
+4. Sets up federated credentials between GitHub Actions/Azure Pipelines and Azure
 
 ### Cost Management
 
