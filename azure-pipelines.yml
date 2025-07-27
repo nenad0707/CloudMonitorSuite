@@ -5,7 +5,7 @@ variables:
   location: 'westeurope'
   parameterFile: 'main.parameters.json'
   templateFile: 'main.bicep'
-  azureSubscription: 'CloudMonitorSuite-ServiceConnection'
+  azureSubscription: 'CloudMonitorSuite'
 
 stages:
 - stage: Lint
