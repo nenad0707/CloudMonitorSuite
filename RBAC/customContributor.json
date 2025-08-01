@@ -14,7 +14,9 @@
     "Microsoft.Resources/providers/register/action",
     "Microsoft.Resources/subscriptions/read",
     "Microsoft.Resources/subscriptions/resourcegroups/read",
-    "Microsoft.Resources/subscriptions/resourceGroups/resources/read"
+    "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
+    "Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read",
+    "Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read"
   ],
   "NotActions": [
     "Microsoft.Insights/components/delete",
