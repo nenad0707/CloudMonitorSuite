@@ -1,0 +1,14 @@
+{
+  "Name": "CloudMonitorLimitedRole",
+  "IsCustom": true,
+  "Description": "Custom role with access to create and manage Log Analytics and App Insights",
+  "Actions": [
+    "Microsoft.Insights/*",
+    "Microsoft.OperationalInsights/workspaces/*",
+    "Microsoft.Resources/deployments/*"
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
+    "/subscriptions/0bfc64d5-4cfc-4582-8a6f-5846d2a10669/resourceGroups/cloudmonitor-rg"
+  ]
+}
