@@ -1,13 +1,23 @@
 {
   "Name": "CloudMonitorLimitedRole",
   "IsCustom": true,
-  "Description": "Custom role with access to create and manage Log Analytics and App Insights",
+  "Description": "Custom role for Azure Pipeline to manage monitoring resources",
   "Actions": [
-    "Microsoft.Insights/*",
+    "Microsoft.Insights/components/*",
     "Microsoft.OperationalInsights/workspaces/*",
-    "Microsoft.Resources/deployments/*"
+    "Microsoft.Resources/deployments/*",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Resources/subscriptions/resourcegroups/deployments/*",
+    "Microsoft.Resources/subscriptions/resourceGroups/*",
+    "Microsoft.Resources/subscriptions/read",
+    "Microsoft.Resources/subscriptions/resourcegroups/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/resources/read"
   ],
-  "NotActions": [],
+  "NotActions": [
+    "Microsoft.Insights/components/delete",
+    "Microsoft.OperationalInsights/workspaces/delete",
+    "Microsoft.Resources/deployments/delete"
+  ],
   "AssignableScopes": [
     "/subscriptions/0bfc64d5-4cfc-4582-8a6f-5846d2a10669/resourceGroups/cloudmonitor-rg"
   ]
